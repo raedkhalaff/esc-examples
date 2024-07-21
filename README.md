@@ -5,3 +5,8 @@
 Pulumi ESC integrates with Pulumi Cloud identity and RBAC to provide rich control over access to secret configuration within an organization. Pulumi ESC supports multiple configuration providers, enabling static key/value configuration as well as dynamically retrieved configuration and secrets via OIDC and additional providers like 1Password and Vault.  Pulumi ESC is available via the new esc CLI, Pulumi Cloud, the Pulumi Cloud REST API, and Pulumi IaC stack configuration.
 
 This repo contains examples of various ESC use-cases.
+
+## Table of Contents
+
+- [Syncing with external sources](./sync): This example demonstrates how to use the pulumiservice provider to create
+a stack with a deployment schedule to regularly sync ESC secrets into external sources (e.g. AWS Secrets Manager).
