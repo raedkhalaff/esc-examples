@@ -51,7 +51,7 @@ const schedule = new service.DeploymentSchedule("schedule", {
     organization: orgName,
     project: settings.project,
     stack: settings.stack,
-    scheduleCron: "*/5 * * * *",
+    scheduleCron: "0 * * * *",
     pulumiOperation: "update",
 })
 
