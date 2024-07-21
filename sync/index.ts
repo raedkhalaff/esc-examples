@@ -39,7 +39,7 @@ const settings = new service.DeploymentSettings("deployment_settings", {
     },
     operationContext: {
         preRunCommands: [
-            `pulumi config env add ${env.name}}`
+            `pulumi config env add ${env.name}`
         ]
     }
 });
