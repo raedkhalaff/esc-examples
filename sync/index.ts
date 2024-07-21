@@ -40,9 +40,9 @@ const settings = new service.DeploymentSettings("deployment_settings", {
     },
     operationContext: {
         preRunCommands: [
-            pulumi.interpolate`pulumi config env add ${env.name} --yes`,
             'pulumi login',
-            pulumi.interpolate`pulumi env open ${env.name} mySyncedKey > sync.json`,
+            pulumi.interpolate`pulumi config env add ${env.name} -s ${orgName}/${stack.projectName}/${stack.stackName} --yes`,
+            pulumi.interpolate`pulumi env open ${orgName}/${env.name} mySyncedKey > sync.json`,
         ]
     }
 });

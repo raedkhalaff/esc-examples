@@ -4,8 +4,8 @@ import * as fs from "fs";
 
 // Read a json file from the local filesystem using node.js fs module
 const json = fs.readFileSync("sync.json", "utf8");
-console.log(json);
 const openedEnv = JSON.parse(json);
+console.log("HAHA", openedEnv.haha);
 
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket");
