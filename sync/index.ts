@@ -10,10 +10,11 @@ const env = new service.Environment("env", {
 `imports:
   - dev-sandbox
 values:
-  myConfigKey: myImportantValue
-  myNestedKey:
-    haha: business
-  mySecret: \${aws.login.accessKeyId}
+  mySyncedKey:
+    myConfigKey: myImportantValue
+    myNestedKey:
+      haha: business
+    mySecret: \${aws.login.accessKeyId}
 `
   )
 })
@@ -39,7 +40,9 @@ const settings = new service.DeploymentSettings("deployment_settings", {
     },
     operationContext: {
         preRunCommands: [
-            `pulumi config env add ${env.name}`
+            'pulumi login',
+            pulumi.interpolate`pulumi config env add ${env.name} --yes`,
+            pulumi.interpolate`pulumi env open ${env.name} mySyncedKey > sync.json`,
         ]
     }
 });
@@ -48,7 +51,7 @@ const schedule = new service.DeploymentSchedule("schedule", {
     organization: orgName,
     project: settings.project,
     stack: settings.stack,
-    scheduleCron: "*/30 * * * *",
+    scheduleCron: "*/5 * * * *",
     pulumiOperation: "update",
 })
 
