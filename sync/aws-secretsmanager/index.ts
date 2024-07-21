@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import * as esc from "@pulumi/esc-sdk";
 import * as fs from "fs";
 
 // Read a json file from the local filesystem using node.js fs module
