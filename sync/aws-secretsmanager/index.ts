@@ -8,7 +8,14 @@ const openedEnv = JSON.parse(json);
 console.log("HAHA", openedEnv.myNestedKey.haha);
 
 // Create an AWS resource (S3 Bucket)
-const bucket = new aws.s3.Bucket("my-bucket");
+const secret = new aws.secretsmanager.Secret("mySecretSyncedFromESC", {
+    recoveryWindowInDays: 0,
+})
+
+const secretVersion = new aws.secretsmanager.SecretVersion("mySecretSyncedFromESCVersion", {
+    secretId: secret.id,
+    secretString: json,
+})
 
 // Export the name of the bucket
-export const bucketName = bucket.id;
+export const bucketName = secret.name;
