@@ -13,7 +13,7 @@ values:
   myConfigKey: myImportantValue
   myNestedKey:
     haha: business
-  mySecret: \${aws.login.accessKeyId}}
+  mySecret: \${aws.login.accessKeyId}
 `
   )
 })
