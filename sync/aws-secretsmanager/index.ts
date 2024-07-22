@@ -4,7 +4,6 @@ import * as fs from "fs";
 // Read a json file from the local filesystem using node.js fs module
 const json = fs.readFileSync("sync.json", "utf8");
 
-// Create an AWS resource (S3 Bucket)
 const secret = new aws.secretsmanager.Secret("mySecretSyncedFromESC", {
     recoveryWindowInDays: 0,
 })
@@ -14,5 +13,5 @@ const secretVersion = new aws.secretsmanager.SecretVersion("mySecretSyncedFromES
     secretString: json,
 })
 
-// Export the name of the bucket
-export const bucketName = secret.name;
+// Export the name of the secret
+export const secretName = secret.name;
