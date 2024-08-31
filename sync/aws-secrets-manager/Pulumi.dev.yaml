@@ -1,0 +1,4 @@
+config:
+  esc-sync-demo:projectName: esc-sync-aws-secretsmanager
+  esc-sync-demo:syncCronSchedule: 0 * * * *
+  esc-sync-demo:repository: pulumi/esc-examples

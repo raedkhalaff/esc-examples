@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as service from "@pulumi/pulumiservice";
-import * as fs from "fs";
 
 const config = new pulumi.Config();
 const orgName = config.require("orgName");
@@ -10,12 +9,10 @@ const repository = config.require("repository");
 const syncCronSchedule = config.get("syncCronSchedule") || "0 * * * *" // default to hourly;
 const envPath = config.get("envPath") || "syncEnv.yaml";
 
-const envContent = fs.readFileSync(envPath, "utf8");
-
 const env = new service.Environment("env", {
   organization: orgName,
   name: `${projectName}-${stackName}`,
-  yaml: new pulumi.asset.StringAsset(envContent)
+  yaml: new pulumi.asset.FileAsset(envPath)
 });
 
 const stack = new service.Stack("esc-sync-aws-secretsmanager", {
@@ -45,7 +42,7 @@ const settings = new service.DeploymentSettings("deployment_settings", {
             'pulumi login',
             pulumi.interpolate`pulumi config env add ${env.name} -s ${fullyQualifiedStackName} --yes`,
             pulumi.interpolate`pulumi env open ${fullyQualifiedEnvName} sync.awsSecretsManager.value > sync.json`,
-            pulumi.interpolate`pulumi config set secretName $(pulumi env open ${fullyQualifiedEnvName} sync.awsSecretsManager.name) -s ${fullyQualifiedStackName}`,
+            pulumi.interpolate`pulumi config set -s ${fullyQualifiedStackName} secretName $(pulumi env open ${fullyQualifiedEnvName} sync.awsSecretsManager.name)`,
         ]
     }
 });

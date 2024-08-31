@@ -7,6 +7,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.113.0",
-        "@pulumi/pulumiservice": "^0.22.2"
+        "@pulumi/pulumiservice": "^0.24.0"
     }
 }

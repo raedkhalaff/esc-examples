@@ -1,0 +1,12 @@
+imports:
+  - dev-sandbox
+values:
+  sync:
+    awsSecretsManager:
+      value:
+        myConfigKey: myImportantValue
+        myNestedKey:
+          haha: business
+        mySecret: ${aws.login.accessKeyId}
+      name: 
+    
