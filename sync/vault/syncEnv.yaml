@@ -2,10 +2,10 @@ imports:
   - dev-sandbox
 values:
   sync:
-    gcpSecretManager:
+    vaultSecret:
       value:
         myConfigKey: myImportantValue
         myNestedKey:
           haha: business
-        mySecret: ${gcp.auth.accessToken}
-      name: my-gcp-secret
+        mySecret: ${vault.login.token}
+      path: secret/data/my-application-config
