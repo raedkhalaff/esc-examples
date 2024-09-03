@@ -6,7 +6,6 @@ import * as fs from "fs";
 const config = new pulumi.Config();
 const secretPath = config.require("secretPath");
 
-// Read a json file from the local filesystem using node.js fs module
 const json = fs.readFileSync("sync.json", "utf8");
 
 const secret = new vault.GenericSecret(secretPath, {

@@ -1,6 +1,3 @@
 config:
-  esc-sync-demo:orgName: pulumi
-  esc-sync-demo:projectName: esc-sync-aws-secretsmanager
-  esc-sync-demo:stackName: dev
-  esc-sync-demo:syncCronSchedule: 0 * * * *
+  esc-sync-demo:projectName: esc-sync-gcp-secrets-manager
   esc-sync-demo:repository: pulumi/esc-examples

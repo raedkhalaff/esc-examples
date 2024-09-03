@@ -1,6 +1,6 @@
-name: esc-sync-demo
+name: esc-sync-demo-aws-secretsmanager
 runtime: nodejs
-description: A pulumi program that creates a stack with deployment settings and a scheduled update to run every 30 minutes.
+description: A pulumi program that creates a stack with deployment settings and a scheduled update to run every hour to sync ESC values with AWS Secrets Manager.
 config:
   pulumi:tags:
     value:
