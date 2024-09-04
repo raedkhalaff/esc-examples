@@ -2,11 +2,10 @@ imports:
   - dev-sandbox
 values:
   sync:
-    awsSecretsManager:
+    gcpSecretManager:
       value:
         myConfigKey: myImportantValue
         myNestedKey:
           haha: business
-        mySecret: ${aws.login.accessKeyId}
-      name: 
-    
+        mySecret: ${gcp.auth.accessToken}
+      name: my-gcp-secret

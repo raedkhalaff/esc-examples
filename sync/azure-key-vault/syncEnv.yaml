@@ -1,0 +1,7 @@
+imports:
+  - dev-sandbox
+values:
+  sync:
+    azureKeyVault:
+      value: ${someSecret.value}
+      name: MY_AZURE_KEY_VAULT_SECRET_NAME

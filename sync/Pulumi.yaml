@@ -1,7 +1,0 @@
-name: esc-sync-demo
-runtime: nodejs
-description: A pulumi program that creates a stack with deployment settings and a scheduled update to run every 30 minutes.
-config:
-  pulumi:tags:
-    value:
-      pulumi:template: aws-typescript

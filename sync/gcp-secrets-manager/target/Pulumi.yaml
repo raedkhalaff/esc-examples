@@ -1,0 +1,7 @@
+name: esc-sync-aws-secretsmanager
+runtime: nodejs
+description: Fetch ESC environments and push to AWS Secrets Manager
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

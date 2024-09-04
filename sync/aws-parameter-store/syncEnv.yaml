@@ -1,0 +1,11 @@
+imports:
+  - dev-sandbox
+values:
+  sync:
+    awsParameterStore:
+      value:
+        myConfigKey: myImportantValue
+        myNestedKey:
+          haha: business
+        mySecret: ${aws.login.accessKeyId}
+      name: /namespaced/name-in-parameter-store

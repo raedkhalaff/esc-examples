@@ -1,0 +1,7 @@
+name: esc-sync-demo-hashicorp-vault
+runtime: nodejs
+description: A pulumi program that creates a stack with deployment settings and a scheduled update to run every hour to sync ESC values with HashiCorp Vault.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

@@ -1,0 +1,11 @@
+imports:
+  - dev-sandbox
+values:
+  sync:
+    vaultSecret:
+      value:
+        myConfigKey: myImportantValue
+        myNestedKey:
+          haha: business
+        mySecret: ${vault.login.token}
+      path: secret/data/my-application-config

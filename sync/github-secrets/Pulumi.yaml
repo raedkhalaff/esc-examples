@@ -1,0 +1,7 @@
+name: esc-sync-demo-github-secrets
+runtime: nodejs
+description: A pulumi program that creates a stack with deployment settings and a scheduled update to run every hour to sync ESC values with GitHub Secrets.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript

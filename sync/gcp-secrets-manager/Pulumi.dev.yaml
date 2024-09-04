@@ -1,0 +1,3 @@
+config:
+  esc-sync-demo:projectName: esc-sync-gcp-secrets-manager
+  esc-sync-demo:repository: pulumi/esc-examples
