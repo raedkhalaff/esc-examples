@@ -1,12 +1,12 @@
 {
-    "name": "esc-sync-aws-secretsmanager",
+    "name": "esc-sync-gcp-secretsmanager",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",
         "typescript": "^5.0.0"
     },
     "dependencies": {
-        "@pulumi/aws": "^6.0.0",
-        "@pulumi/pulumi": "^3.113.0"
+        "@pulumi/gcp": "^8.1.0",
+        "@pulumi/pulumi": "^3.132.0"
     }
 }

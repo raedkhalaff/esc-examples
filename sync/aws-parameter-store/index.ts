@@ -21,7 +21,8 @@ const envPath = config.get("envPath") || "syncEnv.yaml";
 
 const env = new service.Environment("env", {
     organization: orgName,
-    name: `${projectName}-${stackName}`,
+    project: projectName,
+    name: stackName,
     yaml: new pulumi.asset.FileAsset(envPath)
 });
 
@@ -32,7 +33,7 @@ const stack = new service.Stack("esc-sync-aws-parameter-store", {
 })
 
 const fullyQualifiedStackName = pulumi.interpolate`${orgName}/${projectName}/${stackName}`;
-const fullyQualifiedEnvName = pulumi.interpolate`${orgName}/${env.name}`;
+const fullyQualifiedEnvName = pulumi.interpolate`${orgName}/${projectName}/${env.name}`;
 
 const settings = new service.DeploymentSettings("deployment_settings", {
     organization: orgName,
@@ -50,7 +51,7 @@ const settings = new service.DeploymentSettings("deployment_settings", {
     operationContext: {
         preRunCommands: [
             "pulumi login",
-            pulumi.interpolate`pulumi config env add ${env.name} -s ${fullyQualifiedStackName} --yes`,
+            pulumi.interpolate`pulumi config env add ${projectName}/${env.name} -s ${fullyQualifiedStackName} --yes`,
             pulumi.interpolate`pulumi env open ${fullyQualifiedEnvName} sync.awsParameterStore.value > sync.json`,
             pulumi.interpolate`pulumi config set -s ${fullyQualifiedStackName} secretName $(pulumi env open ${fullyQualifiedEnvName} sync.awsParameterStore.name)`,
         ]
