@@ -1,5 +1,5 @@
 {
-    "name": "esc-sync-aws-secretsmanager",
+    "name": "esc-sync-aws-parameterstore",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",
@@ -7,6 +7,6 @@
     },
     "dependencies": {
         "@pulumi/aws": "^6.0.0",
-        "@pulumi/pulumi": "^3.113.0"
+        "@pulumi/pulumi": "^3.132.0"
     }
 }
