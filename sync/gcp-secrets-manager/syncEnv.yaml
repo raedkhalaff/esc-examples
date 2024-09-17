@@ -1,5 +1,5 @@
 imports:
-  - my-imported-env
+  - my-project/my-imported-env
 values:
   sync:
     gcpSecretManager:
