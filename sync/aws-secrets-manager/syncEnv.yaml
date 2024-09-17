@@ -1,12 +1,11 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     awsSecretsManager:
       value:
-        myConfigKey: myImportantValue
+        myConfigKey: ${my-imported-env-foo}
         myNestedKey:
-          haha: business
-        mySecret: ${aws.login.accessKeyId}
+          haha: ${my-imported-env-bar}
+        mySecret: ${my-imported-env-password}
       name: name-in-secrets-manager
-

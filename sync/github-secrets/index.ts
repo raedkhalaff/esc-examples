@@ -44,6 +44,7 @@ const settings = new service.DeploymentSettings("deployment_settings", {
             "pulumi login",
             pulumi.interpolate`pulumi config env add ${projectName}/${env.name} -s ${fullyQualifiedStackName} --yes`,
             pulumi.interpolate`pulumi env open ${fullyQualifiedEnvName} sync.githubSecrets.value > sync.json`,
+            pulumi.interpolate`pulumi config set -s ${fullyQualifiedStackName} secretName $(pulumi env open ${fullyQualifiedEnvName} sync.githubSecrets.name)`,
         ],
     },
 });

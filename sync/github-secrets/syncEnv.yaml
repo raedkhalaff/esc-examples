@@ -1,7 +1,7 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     githubSecrets:
-      value: ${someSecret.value}
+      value: ${my-imported-env-password}
       name: MY_GITHUB_SECRET_NAME

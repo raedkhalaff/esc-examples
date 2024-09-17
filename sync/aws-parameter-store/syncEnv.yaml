@@ -1,11 +1,11 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     awsParameterStore:
       value:
-        myConfigKey: myImportantValue
+        myConfigKey: ${my-imported-env-foo}
         myNestedKey:
-          haha: business
-        mySecret: ${aws.login.accessKeyId}
+          haha: ${my-imported-env-bar}
+        mySecret: ${my-imported-env-password}
       name: /namespaced/name-in-parameter-store

@@ -1,11 +1,11 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     vaultSecret:
       value:
-        myConfigKey: myImportantValue
+        myConfigKey: ${my-imported-env-foo}
         myNestedKey:
-          haha: business
-        mySecret: ${vault.login.token}
+          haha: ${my-imported-env-bar}
+        mySecret: ${my-imported-env-password}
       path: secret/data/my-application-config

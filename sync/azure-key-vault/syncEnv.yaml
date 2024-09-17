@@ -1,7 +1,7 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     azureKeyVault:
-      value: ${someSecret.value}
+      value: ${my-imported-env-password}
       name: MY_AZURE_KEY_VAULT_SECRET_NAME

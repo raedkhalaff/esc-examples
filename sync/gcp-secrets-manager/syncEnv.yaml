@@ -1,11 +1,11 @@
 imports:
-  - dev-sandbox
+  - my-imported-env
 values:
   sync:
     gcpSecretManager:
       value:
-        myConfigKey: myImportantValue
+        myConfigKey: ${my-imported-env-foo}
         myNestedKey:
-          haha: business
-        mySecret: ${gcp.auth.accessToken}
+          haha: ${my-imported-env-bar}
+        mySecret: ${my-imported-env-password}
       name: my-gcp-secret
