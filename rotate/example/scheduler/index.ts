@@ -64,7 +64,7 @@ env.stdout.apply(envYaml => {
                 organization, project, stack,
                 timestamp: now.stdout,
                 pulumiOperation: "update",
-            })
+            }, {replaceOnChanges: ["*"], retainOnDelete: true})
         }
     })
 });
