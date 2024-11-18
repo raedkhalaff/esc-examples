@@ -45,7 +45,7 @@ env.stdout.apply(envYaml => {
                 organization, project, stack,
                 scheduleCron,
                 pulumiOperation: "update",
-            })
+            }, {replaceOnChanges: ["*"]})
         }
 
         // if trigger changes, create an immediate update for the referenced stack
