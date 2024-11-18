@@ -1,0 +1,14 @@
+{
+    "name": "mysql-rotating-creds",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/command": "^1.0.1",
+        "@pulumi/pulumi": "^3.113.0",
+        "@pulumi/random": "^4.16.7"
+    },
+    "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+}

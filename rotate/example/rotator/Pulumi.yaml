@@ -1,0 +1,11 @@
+name: esc-example-credential-rotator
+runtime:
+  name: nodejs
+  options:
+    packagemanager: yarn
+description: Example of rotating a set of credentials every deployment.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
+      part-of: credential-rotation-demo
