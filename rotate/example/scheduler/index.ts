@@ -60,6 +60,17 @@ env.stdout.apply(envYaml => {
                 pulumiOperation: "update",
             }, {replaceOnChanges: ["*"], retainOnDelete: true})
         }
+
+        // example of writing back status information
+        if (scheduleCron || trigger) {
+            const lastUpdate = new command.local.Command(`${schedule.path}-last-update-timestamp`, {
+                create: 'date --iso-8601=seconds',
+                triggers: [trigger, scheduleCron]
+            })
+            new command.local.Command(`${schedule.path}-write-back`, {
+                create: pulumi.interpolate`pulumi env set ${envRef} "${schedule.path}.xfn::pulumi-scheduled-update._lastScheduleUpdate" "${lastUpdate.stdout}"`
+            })
+        }
     })
 });
 
