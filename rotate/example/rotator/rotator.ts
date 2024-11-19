@@ -4,7 +4,8 @@ import * as command from "@pulumi/command";
 // Rotator manages a set of two secrets that it swaps between, replacing one at a time.
 // When a secret becomes `current` it is replaced with a new version.
 // The previously `current` secret will remain unchanged so that it remains valid to give dependents time to switchover.
-export class Rotator<T> extends pulumi.ComponentResource {
+export class Rotator<T extends pulumi.Resource> extends pulumi.ComponentResource {
+    lastUpdate: pulumi.Output<Date>
     current: pulumi.Output<T>
     previous: pulumi.Output<T>
 
@@ -58,5 +59,12 @@ export class Rotator<T> extends pulumi.ComponentResource {
         // track whichever secret was changed last
         this.current = toggle.stdout.apply(toggle => toggle === "a" ? a : b)
         this.previous = toggle.stdout.apply(toggle => toggle === "a" ? b : a)
+
+        // keep track of when the last update was
+        const changed = new command.local.Command(`${name}-last-update`, {
+            create: 'date --iso-8601=seconds --utc',
+            triggers: [args.trigger]
+        }, { dependsOn: [this.current]})
+        this.lastUpdate = changed.stdout.apply(stdout => new Date(stdout));
     }
 }

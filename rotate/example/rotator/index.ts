@@ -18,6 +18,8 @@ const creds = new Rotator("rotating-creds", {
     },
 })
 
+// export when the last rotation happened
+export const lastUpdate = creds.lastUpdate.apply(date => date.toISOString());
 // export the currently active credential, which will be imported by the downstream ESC environment.
 export const current = creds.current.result;
 // previous represents the inactive credential that is still valid, but will be replaced next rotation.
