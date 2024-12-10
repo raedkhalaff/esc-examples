@@ -1,0 +1,14 @@
+name: esc-rotation-scheduler
+runtime:
+  name: nodejs
+  options:
+    packagemanager: yarn
+description: Creates scheduled deployments for other stacks based on `xfn::pulumi-scheduled-update` pseudo-function configurations within an ESC environment.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
+      part-of: credential-rotation-demo
+  envRef:
+    type: string
+    description: Fully qualified name of an ESC environment to watch for changes.
