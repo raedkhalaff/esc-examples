@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@pulumi/aws':
+        specifier: ^6.68.0
+        version: 6.68.0(typescript@5.7.3)
       '@pulumi/pulumi':
         specifier: ^3.113.0
         version: 3.150.0(typescript@5.7.3)
+      '@pulumi/pulumiservice':
+        specifier: ^0.29.0
+        version: 0.29.0(typescript@5.7.3)
     devDependencies:
       '@types/node':
         specifier: ^18
@@ -216,6 +222,9 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
+  '@pulumi/aws@6.68.0':
+    resolution: {integrity: sha512-uehJNSviSq3garkLXsy1zZzI7V6clBDQq8G83PSpNfdePdGeKtuRoxMSsuqkgpGkue+cGjoxJtC6QwdtzgaKBQ==}
+
   '@pulumi/pulumi@3.150.0':
     resolution: {integrity: sha512-zATZhIGD6bG3eJgMgD82RGaFSs1Tlm8NgYsIeYWfTDbGdzq0kBLgRfm4b7Bwu+M2lTJD79vnRN5Dxx2L74Clvw==}
     engines: {node: '>=18'}
@@ -227,6 +236,9 @@ packages:
         optional: true
       typescript:
         optional: true
+
+  '@pulumi/pulumiservice@0.29.0':
+    resolution: {integrity: sha512-sJ1b+HJjn3xPWheUQT6QQRBRqS5UTYnfrnsfS9Y1IWICLGxP4j7RYz7BbfSaaCW+sK2bcaOzdqrdBopmbULxZw==}
 
   '@pulumi/query@0.3.0':
     resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==}
@@ -649,6 +661,11 @@ packages:
 
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
+
+  mime@2.6.0:
+    resolution: {integrity: sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==}
+    engines: {node: '>=4.0.0'}
+    hasBin: true
 
   mimic-fn@2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
@@ -1359,6 +1376,16 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
+  '@pulumi/aws@6.68.0(typescript@5.7.3)':
+    dependencies:
+      '@pulumi/pulumi': 3.150.0(typescript@5.7.3)
+      mime: 2.6.0
+    transitivePeerDependencies:
+      - bluebird
+      - supports-color
+      - ts-node
+      - typescript
+
   '@pulumi/pulumi@3.150.0(typescript@5.7.3)':
     dependencies:
       '@grpc/grpc-js': 1.12.6
@@ -1396,6 +1423,15 @@ snapshots:
     transitivePeerDependencies:
       - bluebird
       - supports-color
+
+  '@pulumi/pulumiservice@0.29.0(typescript@5.7.3)':
+    dependencies:
+      '@pulumi/pulumi': 3.150.0(typescript@5.7.3)
+    transitivePeerDependencies:
+      - bluebird
+      - supports-color
+      - ts-node
+      - typescript
 
   '@pulumi/query@0.3.0': {}
 
@@ -1817,6 +1853,8 @@ snapshots:
       - supports-color
 
   merge-stream@2.0.0: {}
+
+  mime@2.6.0: {}
 
   mimic-fn@2.1.0: {}
 
