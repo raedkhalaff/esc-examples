@@ -7,11 +7,11 @@ import * as pulumiservice from "@pulumi/pulumiservice";
 
 // Create an identity provider to link your pulumi organization and aws accounts
 // If you've done this previously, you can fetch your existing provider instead:
-// const oidcProvider = aws.iam.OpenIdConnectProvider.get("oidc-provider", pulumi.interpolate`arn:aws:iam::${aws.getCallerIdentityOutput().accountId}:oidc-provider/api.pulumi.com/oidc`)
-const oidcProvider = new aws.iam.OpenIdConnectProvider("oidc", {
-    url: "https://api.pulumi.com/oidc",
-    clientIdLists: [`aws:${pulumi.getOrganization()}`]
-})
+const oidcProvider = aws.iam.OpenIdConnectProvider.get("oidc-provider", pulumi.interpolate`arn:aws:iam::${aws.getCallerIdentityOutput().accountId}:oidc-provider/api.pulumi.com/oidc`)
+// const oidcProvider = new aws.iam.OpenIdConnectProvider("oidc", {
+//     url: "https://api.pulumi.com/oidc",
+//     clientIdLists: [`aws:${pulumi.getOrganization()}`]
+// })
 
 // Create a WebIdentity trust policy.
 // This policy allows a role to be assumed by anyone in your pulumi org who can open the `esc-rotation-demo/managing-creds` environment
@@ -105,6 +105,10 @@ values:
         region: us-west-1
         login: \${environments.${creds.project}.${creds.name}.aws.login}
         userArn: ${rotatedUserArn}
+
+  environmentVariables:
+    AWS_ACCESS_KEY_ID: \${rotated-creds.current.accessKeyId}
+    AWS_SECRET_ACCESS_KEY: \${rotated-creds.current.secretAccessKey}
     `
 })
 
@@ -112,3 +116,7 @@ values:
 // The iam user does not yet have an access key, so you'll want to perform an initial manual rotation on the `esc-rotation-demo/rotated-creds` environment.
 // Afterwards you can use this URL to set up a schedule for periodic automatic rotation.
 export const url = pulumi.interpolate`https://app.pulumi.com/${pulumi.getOrganization()}/esc/${rotated.project}/${rotated.name}/rotations`
+
+// Step 7: Use your rotated credential.
+// Try running the following:
+export const cmd = pulumi.interpolate`esc run ${rotated.project}/${rotated.name} -- aws sts get-caller-identity`
