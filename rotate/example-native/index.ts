@@ -87,9 +87,6 @@ const rotatedUser = new aws.iam.User("rotated-user", {
     path: "/esc/rotated/",
 })
 
-// (fixme: currently need to strip the path from the arn, because fn::rotate::aws-iam thinks it makes the username invalid)
-const rotatedUserArn = rotatedUser.arn.apply(arn => arn.replace("/esc/rotated", ""));
-
 // Step 5: Create an environment with rotation configuration.
 // This uses an inline reference to the managing credentials in the other environment. This reference is only resolved during rotation,
 // not during open, so users who have permission to OPEN this environment don't necessarily need access to the managing creds environment.
@@ -104,7 +101,7 @@ values:
       inputs:
         region: us-west-1
         login: \${environments.${creds.project}.${creds.name}.aws.login}
-        userArn: ${rotatedUserArn}
+        userArn: ${rotatedUser.arn}
 
   environmentVariables:
     AWS_ACCESS_KEY_ID: \${rotated-creds.current.accessKeyId}
