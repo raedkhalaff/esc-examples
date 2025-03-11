@@ -1,0 +1,10 @@
+name: example-native
+description: Set up a demo ESC environment that uses native secret rotation
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
